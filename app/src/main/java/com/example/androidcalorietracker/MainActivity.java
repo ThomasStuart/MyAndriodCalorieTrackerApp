@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+        /* new code */
         FloatingActionButton addMealButton = (FloatingActionButton) findViewById(R.id.addMealButton);
         addMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
                 openAddMealActivity();
             }
         });
+
     }
 
 
@@ -52,5 +54,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
+    public void loadUserData(){
+        //TODO:: start up firestore
+    }
 
 }

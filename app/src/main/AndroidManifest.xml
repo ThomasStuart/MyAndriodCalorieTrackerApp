@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidCalorieTracker">
         <activity
+            android:name=".MeasureByHandItemInputActivity"
+            android:exported="true" />
+        <activity
             android:name=".ScaleItemEntryActivity"
             android:exported="true" />
         <activity

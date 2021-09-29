@@ -4,10 +4,10 @@ public class ItemEntryObject {
 
     private String itemName;
     private String measureBy;
-    private float amount;
+    private double amount;
     private int   calories;
 
-    public ItemEntryObject(String itemName, String measureBy, float amount, int calories) {
+    public ItemEntryObject(String itemName, String measureBy, double amount, int calories) {
         this.itemName = itemName;
         this.measureBy = measureBy;
         this.amount = amount;
@@ -30,11 +30,11 @@ public class ItemEntryObject {
         this.measureBy = measureBy;
     }
 
-    public float getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(float amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
