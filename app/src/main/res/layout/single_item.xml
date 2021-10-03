@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/amountView"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="0dp"
+            android:text="amount" />
+
+        <TextView
+            android:id="@+id/unitView"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="75dp"
+            android:text="unit"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/nameView"
+            android:layout_width="150dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="120dp"
+            android:layout_weight="1"
+            android:text="name"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/caloriesView"
+            android:layout_width="120dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="270dp"
+            android:layout_weight="1"
+            android:text="calories"
+            android:textAlignment="center" />
+
+    </RelativeLayout>
+
+</LinearLayout>

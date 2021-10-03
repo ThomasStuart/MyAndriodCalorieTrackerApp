@@ -2,6 +2,7 @@ package com.example.androidcalorietracker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,14 +10,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
 
 public class MeasureByHandItemInputActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measure_by_hand_item_input);
+
 
 
         TextView foodNameTextView = (TextView) findViewById(R.id.foodNameTextView);
@@ -39,14 +42,12 @@ public class MeasureByHandItemInputActivity extends AppCompatActivity {
 
     public void submitItemAndExitButtonAction(String foodName, double amount, int calories){
         ItemEntryObject item = new ItemEntryObject(foodName, "Hand", amount, calories );
-        addNewItemToFireStore(item);
+
+        SharedPreferencesManager.saveItemEntryObject( getApplicationContext() , item);
 
         Intent intent = new Intent(this, AddMealActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-    }
-
-    public void addNewItemToFireStore(ItemEntryObject item ){
+        startActivity(intent);
     }
 
 }
