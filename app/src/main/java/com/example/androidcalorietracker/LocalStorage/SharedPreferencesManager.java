@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -54,6 +54,10 @@ public class SharedPreferencesManager {
             return new ArrayList<>();
         }
         return items;
+    }
+
+    public static void clearItemEntryArray(){
+        sharedPreferences.edit().remove("MyObject").commit();
     }
 
 }

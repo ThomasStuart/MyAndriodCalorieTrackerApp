@@ -5,16 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
+import com.example.androidcalorietracker.DataModel.MealEntryObject;
+import com.example.androidcalorietracker.Database.FirebaseFirestoreManager;
+import com.example.androidcalorietracker.Time.TimeGenerator;
 import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
-import com.example.androidcalorietracker.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class AddMealActivity extends AppCompatActivity {
@@ -39,11 +39,12 @@ public class AddMealActivity extends AppCompatActivity {
             }
         });
 
-
         Button doneAddingMealButton = (Button) findViewById(R.id.doneAddingMealButton);
         doneAddingMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
+                uploadMealToFirebaseFirestore(items);
+                SharedPreferencesManager.clearItemEntryArray();
                 finish();
             }
         });
@@ -54,14 +55,11 @@ public class AddMealActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startMealActivity(){
-
+    public void uploadMealToFirebaseFirestore(List<ItemEntryObject> items){
+        //TODO:: make meal name dynamic by adding a text field
+        //TODO:: make meal type dynamic by using time
+        MealEntryObject meal = new MealEntryObject(items, "meal1", "snack", TimeGenerator.getTimeStamp());
+        //TODO:: make the user argument dynamic
+        FirebaseFirestoreManager.addNewMealToFirebaseFirestore("user1", meal, TimeGenerator.getDateDatabaseKey() );
     }
-
-    public void finishAddMealActivity(){
-        // step 1 - upload meal to firebase
-        // step 2 - delete local storage of items list
-        // step 3 - pop back
-    }
-
 }

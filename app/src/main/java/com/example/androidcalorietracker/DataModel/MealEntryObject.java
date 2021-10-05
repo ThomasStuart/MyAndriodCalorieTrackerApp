@@ -6,13 +6,15 @@ import java.util.List;
 public class MealEntryObject {
 
     private List<ItemEntryObject> mealItems;
+    private String mealName;
     private String mealType;
-    private Timestamp timeEntered;
+    private String timeKey;
 
-    public MealEntryObject(List<ItemEntryObject> mealItems, String mealType, Timestamp timeEntered) {
+    public MealEntryObject(List<ItemEntryObject> mealItems, String mealName, String mealType, String timeKey) {
         this.mealItems = mealItems;
+        this.mealName = mealName;
         this.mealType = mealType;
-        this.timeEntered = timeEntered;
+        this.timeKey = timeKey;
     }
 
     public List<ItemEntryObject> getMealItems() {
@@ -31,13 +33,21 @@ public class MealEntryObject {
         this.mealType = mealType;
     }
 
-    public Timestamp getTimeEntered() {
-        return timeEntered;
+    public String getMealTimeKey() {
+        return timeKey;
     }
 
-    public void setTimeEntered(Timestamp timeEntered) {
-        this.timeEntered = timeEntered;
+    public void setTimeEntered(String timeKey) {
+        this.timeKey = timeKey;
     }
 
+
+    public String getMealName() {
+        return mealName;
+    }
+
+    public void setMealName(String mealName) {
+        this.mealName = mealName;
+    }
 
 }
