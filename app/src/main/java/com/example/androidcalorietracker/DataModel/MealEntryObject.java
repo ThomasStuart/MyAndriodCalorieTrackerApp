@@ -1,6 +1,7 @@
 package com.example.androidcalorietracker.DataModel;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MealEntryObject {
@@ -9,6 +10,13 @@ public class MealEntryObject {
     private String mealName;
     private String mealType;
     private String timeKey;
+
+    public MealEntryObject(){
+        this.mealItems = new ArrayList<>();
+        this.mealName = "null";
+        this.mealType = "null";
+        this.timeKey = "null";
+    }
 
     public MealEntryObject(List<ItemEntryObject> mealItems, String mealName, String mealType, String timeKey) {
         this.mealItems = mealItems;
@@ -48,6 +56,13 @@ public class MealEntryObject {
 
     public void setMealName(String mealName) {
         this.mealName = mealName;
+    }
+
+
+    public void printItems(){
+        for(ItemEntryObject item : this.getMealItems() ){
+            item.printItem();
+        }
     }
 
 }

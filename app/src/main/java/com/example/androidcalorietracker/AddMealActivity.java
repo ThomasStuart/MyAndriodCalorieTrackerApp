@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
 import com.example.androidcalorietracker.DataModel.MealEntryObject;
@@ -39,11 +41,13 @@ public class AddMealActivity extends AppCompatActivity {
             }
         });
 
+        Switch snackSwitch        = (Switch)   findViewById(R.id.snakSwitch);
+
         Button doneAddingMealButton = (Button) findViewById(R.id.doneAddingMealButton);
         doneAddingMealButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                uploadMealToFirebaseFirestore(items);
+                uploadMealToFirebaseFirestore(items, snackSwitch.isChecked() );
                 SharedPreferencesManager.clearItemEntryArray();
                 finish();
             }
@@ -55,11 +59,35 @@ public class AddMealActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void uploadMealToFirebaseFirestore(List<ItemEntryObject> items){
-        //TODO:: make meal name dynamic by adding a text field
-        //TODO:: make meal type dynamic by using time
-        MealEntryObject meal = new MealEntryObject(items, "meal1", "snack", TimeGenerator.getTimeStamp());
-        //TODO:: make the user argument dynamic
-        FirebaseFirestoreManager.addNewMealToFirebaseFirestore("user1", meal, TimeGenerator.getDateDatabaseKey() );
+    public void uploadMealToFirebaseFirestore(List<ItemEntryObject> items,  boolean isSnackChecked){
+        String mealName = determineMealType(isSnackChecked);
+
+        MealEntryObject meal = new MealEntryObject(items, mealName, determineMealType(isSnackChecked), TimeGenerator.getTimeStamp());
+        FirebaseFirestoreManager.addNewMealToFirebaseFirestore( meal );
     }
+
+    public String determineMealType( boolean isSnackChecked ){
+        if(isSnackChecked) return "Snack";
+        int hourOfDay = TimeGenerator.getMilitaryHoursInteger();
+        String mealType = "";
+
+        if (  isBetween(hourOfDay, 4, 11)) {
+            mealType = "Breakfast";
+        } else if (isBetween(hourOfDay, 12, 15)) {
+            mealType = "Lunch";
+        }else if (isBetween(hourOfDay, 16, 21)) {
+            mealType = "Dinner";
+        }
+        else {
+            mealType = "Snack";
+        }
+        return  mealType;
+    }
+
+    public static boolean isBetween(int x, int lower, int upper) {
+        return lower <= x && x <= upper;
+    }
+
+
+
 }

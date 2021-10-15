@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.androidcalorietracker.R;
+import com.example.androidcalorietracker.Time.TimeGenerator;
 import com.example.androidcalorietracker.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment {
@@ -27,14 +28,15 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        final TextView textView = binding.textHome;
+        /*
+        final TextView textView = binding.DateHomeTV;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText(TimeGenerator.getDayOfWeekAsWord()+ " " + TimeGenerator.getMonthOfYear() + " " + TimeGenerator.getDayOfWeekAsInt());
             }
         });
+         */
         return root;
     }
 

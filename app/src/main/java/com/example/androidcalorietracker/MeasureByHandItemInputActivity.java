@@ -20,8 +20,6 @@ public class MeasureByHandItemInputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_measure_by_hand_item_input);
 
-
-
         TextView foodNameTextView = (TextView) findViewById(R.id.foodNameTextView);
         TextView countTextView    = (TextView) findViewById(R.id.inputCountTextView);
         TextView caloriesTextView = (TextView) findViewById(R.id.caloriesTextView);
@@ -41,7 +39,7 @@ public class MeasureByHandItemInputActivity extends AppCompatActivity {
     }
 
     public void submitItemAndExitButtonAction(String foodName, double amount, int calories){
-        ItemEntryObject item = new ItemEntryObject(foodName, "Hand", amount, calories );
+        ItemEntryObject item = new ItemEntryObject(foodName, "Hand", amount, calories);
 
         SharedPreferencesManager.saveItemEntryObject( getApplicationContext() , item);
 

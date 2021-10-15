@@ -11,7 +11,7 @@
         android:layout_width="334dp"
         android:layout_height="500dp"
         android:layout_marginStart="38dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="84dp"
         android:layout_marginEnd="39dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,10 @@
         android:text="Done"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addItemButton"
-        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.645" />
+        app:layout_constraintVertical_bias="0.767" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addItemButton"
@@ -50,21 +50,21 @@
         app:layout_constraintHorizontal_bias="0.89"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.291"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@android:drawable/ic_input_add" />
 
     <Switch
-        android:id="@+id/switch1"
+        android:id="@+id/snakSwitch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
         android:layout_marginTop="37dp"
-        android:layout_marginEnd="213dp"
         android:layout_marginBottom="28dp"
         android:text="Is this a snack ?"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

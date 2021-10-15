@@ -7,6 +7,13 @@ public class ItemEntryObject {
     private double amount;
     private int   calories;
 
+    public ItemEntryObject(){
+        this.itemName = "null";
+        this.measureBy = "null";
+        this.amount = 0;
+        this.calories = 0;
+    }
+
     public ItemEntryObject(String itemName, String measureBy, double amount, int calories) {
         this.itemName = itemName;
         this.measureBy = measureBy;
@@ -44,6 +51,10 @@ public class ItemEntryObject {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    public void printItem(){
+        System.out.println("item name: " + getItemName()  + " , calories " + getCalories() );
     }
 
 }
