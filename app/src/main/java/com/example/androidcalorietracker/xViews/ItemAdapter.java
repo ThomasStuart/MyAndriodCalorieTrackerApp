@@ -38,10 +38,10 @@ public class ItemAdapter extends ArrayAdapter<ItemEntryObject> {
         TextView itemName     = convertView.findViewById(R.id.nameView);
         TextView itemCalories = convertView.findViewById(R.id.caloriesView);
 
-        amount.setText("1");
-        itemUnit.setText(item.getMeasureBy());
+        amount.setText(  String.valueOf( item.getAmount() )  );
+        itemUnit.setText( item.getMeasureBy().equals("Hand") ? " " : item.getMeasureBy() );
         itemName.setText(item.getItemName());
-        itemCalories.setText("100");
+        itemCalories.setText(  String.valueOf( item.getCalories() )  + " calories");
 
         return convertView;
     }

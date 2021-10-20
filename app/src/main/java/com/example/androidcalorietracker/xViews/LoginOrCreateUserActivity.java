@@ -67,18 +67,18 @@ public class LoginOrCreateUserActivity extends AppCompatActivity {
                                 String passWord = document.getString("password");
 
                                 if( userName.equals(username) && passWord.equals(password) ){
+                                    FirebaseFirestoreManager.signInUser(userName);
                                     openMainActivity();
                                 }
                             }
 
                             if(task.getResult().size() == 0 ){
                                 Log.d(TAG, "User not Exists");
-                                //You can store new user information here
-
+                                // No users with that username were found
                             }
 
                         } else {
-                            System.out.println("FAILURE");
+                            // Complete failure on query.  Either the database is broken or path.
                             Log.d(TAG, "Error getting documents: ", task.getException());
                         }
                     }

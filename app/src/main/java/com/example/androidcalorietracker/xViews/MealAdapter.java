@@ -37,7 +37,7 @@ public class MealAdapter extends RecyclerView.Adapter<MealAdapter.MealViewHolder
     public void onBindViewHolder(@NonNull MealViewHolder holder, int position) {
         holder.amountTV.setText( Double.toString( items.get(position).getAmount() ) );
 
-        String unitsString = items.get(position).getMeasureBy().equals("hand") ? " " : items.get(position).getMeasureBy();
+        String unitsString = items.get(position).getMeasureBy().equals("Hand") ? " " : items.get(position).getMeasureBy();
 
         holder.unitTV.setText( unitsString );
         holder.nameTV.setText(  items.get(position).getItemName() );

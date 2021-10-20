@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
         //(3) dinner content
         dRV = findViewById(R.id.dListView);
         dinnerAdapter = new MealAdapter(this, dinnerList);
-        getMealFromFirebaseFirestore("Dinner", dinnerList, dinnerAdapter);
         dRV.setAdapter(dinnerAdapter);
+        getMealFromFirebaseFirestore("Dinner", dinnerList, dinnerAdapter);
         dRV.setLayoutManager(new LinearLayoutManager(this));
 
         //Set dates
@@ -114,7 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void getMealFromFirebaseFirestore(String mealKey, List<ItemEntryObject> list, MealAdapter adapter ){
         String dayDocumentKey = TimeGenerator.getDateDatabaseKey();
-        // dayDocumentKey = "2021#10#11"; // use for testing purposes
 
         DocumentReference docRef = FirebaseFirestoreManager.getDatabase()
                 .collection(FirebaseFirestoreManager.ROOT_COLLECTION).document(FirebaseFirestoreManager.getUser())
