@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
+import com.example.androidcalorietracker.User.User;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
@@ -54,6 +55,22 @@ public class SharedPreferencesManager {
             return new ArrayList<>();
         }
         return items;
+    }
+
+    public static void saveUserToSharedPreferences(Context context, User user){
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String json = gson.toJson(user);
+        prefsEditor.putString("User", json);
+        prefsEditor.commit();
+    }
+
+    public static User getUserFromSharedPreferences(){
+        Gson gson = new Gson();
+        Type type = new TypeToken<User>(){}.getType();
+        String sp = sharedPreferences.getString("User", "");
+
+       return  gson.fromJson(sp, type);
     }
 
     public static void clearItemEntryArray(){

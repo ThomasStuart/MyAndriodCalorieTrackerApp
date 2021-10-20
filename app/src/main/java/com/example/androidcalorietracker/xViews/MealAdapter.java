@@ -1,4 +1,4 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
-import com.example.androidcalorietracker.DataModel.MealEntryObject;
+import com.example.androidcalorietracker.R;
 
 import java.util.List;
 

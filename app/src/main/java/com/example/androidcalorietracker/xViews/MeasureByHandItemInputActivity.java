@@ -1,8 +1,7 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
 import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
+import com.example.androidcalorietracker.R;
 
 public class MeasureByHandItemInputActivity extends AppCompatActivity {
 

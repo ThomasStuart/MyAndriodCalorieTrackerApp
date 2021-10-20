@@ -1,4 +1,4 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,7 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.RadioGroup;
+
+import com.example.androidcalorietracker.R;
 
 public class ChooseMeasurementActivity extends AppCompatActivity {
 

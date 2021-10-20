@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidCalorieTracker" >
         <activity
-            android:name=".LoginOrCreateUserActivity"
+            android:name=".xViews.LoginOrCreateUserActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,24 +18,24 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateNewUserActivity"
+            android:name=".xViews.CreateNewUserActivity"
             android:exported="true"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".MeasureByHandItemInputActivity"
+            android:name=".xViews.MeasureByHandItemInputActivity"
             android:exported="true" />
         <activity
-            android:name=".ScaleItemEntryActivity"
+            android:name=".xViews.ScaleItemEntryActivity"
             android:exported="true" />
         <activity
-            android:name=".ChooseMeasurementActivity"
+            android:name=".xViews.ChooseMeasurementActivity"
             android:exported="true" />
         <activity
-            android:name=".AddMealActivity"
+            android:name=".xViews.AddMealActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".xViews.MainActivity"
             android:exported="true"
             android:label="@string/app_name" >
         </activity>

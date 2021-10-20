@@ -8,6 +8,11 @@ public class User {
     private boolean isPremium;
     private boolean isFreeTrial;
 
+    public User(){
+        username = "";
+        password = "";
+    }
+
     public User(String username, String password) {
         this.username = username;
         this.password = password;

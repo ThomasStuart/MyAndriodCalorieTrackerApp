@@ -1,4 +1,4 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,15 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.androidcalorietracker.DataModel.ItemEntryObject;
-import com.example.androidcalorietracker.DataModel.MealEntryObject;
 import com.example.androidcalorietracker.Database.FirebaseFirestoreManager;
+import com.example.androidcalorietracker.R;
 import com.example.androidcalorietracker.User.User;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-
-import java.util.List;
 
 public class CreateNewUserActivity extends AppCompatActivity {
 

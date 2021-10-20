@@ -1,4 +1,4 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,13 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Switch;
-import android.widget.TextView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
 import com.example.androidcalorietracker.DataModel.MealEntryObject;
 import com.example.androidcalorietracker.Database.FirebaseFirestoreManager;
+import com.example.androidcalorietracker.R;
 import com.example.androidcalorietracker.Time.TimeGenerator;
 import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -57,9 +55,17 @@ public class AddMealActivity extends AppCompatActivity {
             public void onClick(View v){
                 uploadMealToFirebaseFirestore(items);
                 SharedPreferencesManager.clearItemEntryArray();
-                finish();
+                closeView();
             }
         });
+    }
+
+    public void closeView(){
+        finish();
+        overridePendingTransition(0, 0);
+        Intent intent =  new Intent(this, MainActivity.class);
+        startActivity( intent );
+        overridePendingTransition(0, 0);
     }
 
     public void openChooseMeasurementActivity(){

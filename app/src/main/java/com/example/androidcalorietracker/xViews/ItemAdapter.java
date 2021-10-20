@@ -1,4 +1,4 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import android.content.ClipData;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
+import com.example.androidcalorietracker.R;
 
 import java.util.List;
 

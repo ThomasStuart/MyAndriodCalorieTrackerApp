@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
 import com.example.androidcalorietracker.DataModel.MealEntryObject;
+import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
 import com.example.androidcalorietracker.Time.TimeGenerator;
 import com.example.androidcalorietracker.User.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -16,6 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,8 +32,8 @@ public class FirebaseFirestoreManager {
     public static String DAYS_COLLECTION  = "Days";
     public static String MEALS_COLLECTION = "Meals";
 
-    public static FirebaseFirestore database = null;
-    private static String user = "user1";
+    private static FirebaseFirestore database = null;
+    private static String user = "user1"; //default user
 
     // private constructor for singleton
     private FirebaseFirestoreManager(){
@@ -80,6 +84,11 @@ public class FirebaseFirestoreManager {
                     Log.w(TAG, "Error writing document", e);
                 }
             });
+    }
+
+
+    public static void signInUser(String username ){
+        user = username;
     }
 
     public static FirebaseFirestore getDatabase(){

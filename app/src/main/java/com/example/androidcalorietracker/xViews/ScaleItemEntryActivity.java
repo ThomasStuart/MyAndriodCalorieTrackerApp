@@ -1,8 +1,10 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.androidcalorietracker.R;
 
 public class ScaleItemEntryActivity extends AppCompatActivity {
 

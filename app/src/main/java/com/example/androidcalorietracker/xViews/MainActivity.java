@@ -1,16 +1,15 @@
-package com.example.androidcalorietracker;
+package com.example.androidcalorietracker.xViews;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.androidcalorietracker.DataModel.ItemEntryObject;
 import com.example.androidcalorietracker.DataModel.MealEntryObject;
 import com.example.androidcalorietracker.Database.FirebaseFirestoreManager;
 import com.example.androidcalorietracker.LocalStorage.SharedPreferencesManager;
+import com.example.androidcalorietracker.R;
 import com.example.androidcalorietracker.Time.TimeGenerator;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,7 +26,6 @@ import com.example.androidcalorietracker.databinding.ActivityMainBinding;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +34,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
-    private RecyclerView bRV;
-    private RecyclerView lRV;
-    private RecyclerView dRV;
+    private RecyclerView breakfastRecyclerView;
+    private RecyclerView lunchRecyclerView;
+    private RecyclerView dinnerRecyclerView;
 
     private  MealAdapter breakfastAdapter;
     private  MealAdapter lunchAdapter;
@@ -56,41 +54,42 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        BottomNavigationView navView = findViewById(R.id.nav_view);
-        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
-                .build();
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
-        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
-        NavigationUI.setupWithNavController(binding.navView, navController);
-
         /* new code */
         // Start local storage
         SharedPreferencesManager.init(getApplicationContext());
         // Start up the firebase
         FirebaseFirestoreManager.init();
 
+        // find views
+        breakfastRecyclerView = findViewById(R.id.bListView);
+        lunchRecyclerView     = findViewById(R.id.lListView);
+        dinnerRecyclerView    = findViewById(R.id.dListView);
+
+        BottomNavigationView navView = findViewById(R.id.nav_view);
+        AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications).build();
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+        NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+        NavigationUI.setupWithNavController(binding.navView, navController);
+
+
         //Load content
         // (1) breakfast content
-        bRV = findViewById(R.id.bListView);
         breakfastAdapter = new MealAdapter(this, breakfastList);
-        bRV.setAdapter(breakfastAdapter);
+        breakfastRecyclerView.setAdapter(breakfastAdapter);
         getMealFromFirebaseFirestore("Breakfast", breakfastList, breakfastAdapter);
-        bRV.setLayoutManager(new LinearLayoutManager(this));
+        breakfastRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // (2) lunch content
-        lRV = findViewById(R.id.lListView);
         lunchAdapter = new MealAdapter(this, lunchList);
+        lunchRecyclerView.setAdapter(lunchAdapter);
         getMealFromFirebaseFirestore("Lunch", lunchList, lunchAdapter);
-        lRV.setAdapter(lunchAdapter);
-        lRV.setLayoutManager(new LinearLayoutManager(this));
+        lunchRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //(3) dinner content
-        dRV = findViewById(R.id.dListView);
         dinnerAdapter = new MealAdapter(this, dinnerList);
-        dRV.setAdapter(dinnerAdapter);
+        dinnerRecyclerView.setAdapter(dinnerAdapter);
         getMealFromFirebaseFirestore("Dinner", dinnerList, dinnerAdapter);
-        dRV.setLayoutManager(new LinearLayoutManager(this));
+        dinnerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         //Set dates
         TextView dayAsWordView = (TextView) findViewById(R.id.DayView);
